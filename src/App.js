@@ -91,7 +91,7 @@ export default class SheetJSApp extends React.Component {
   }
 }
 
-const make_cols = (refstr: any) => {
+const make_cols = (refstr) => {
   let o = [],
     C = utils.decode_range(refstr).e.c + 1
   for (var i = 0; i < C; ++i) o[i] = { name: utils.encode_col(i), key: i }
