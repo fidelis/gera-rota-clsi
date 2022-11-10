@@ -1,9 +1,8 @@
 import React from "react"
 import { read, writeFile, utils } from "xlsx"
-import DragDropFile from "./components/File/DragDropFile"
-import DataInput from "./components/File/DataInput"
-import OutTable from "./components/File/OutTalbe"
-
+import DragDropFile from "../components/File/DragDropFile"
+import DataInput from "../components/File/DataInput"
+import OutTable from "../components/File/OutTalbe"
 
 export default class SheetJSApp extends React.Component {
   constructor(props) {
@@ -48,20 +47,7 @@ export default class SheetJSApp extends React.Component {
     return (
     <div>
       <div className="flex flex-col items-center">
-        <p className="m-10 text-white text-4xl font-serif">CLSI GERA ROTA</p>
-      </div>
-      <div className="flex justify-center items-center">
-        <label
-          htmlFor="inputFile"
-          className="max-w-xs bg-violet-600 hover:bg-violet-900 rounded p-2 text-zinc-100 font-bold"
-        >
-          Carregar Rota
-        </label>
-        <input
-          id="inputFile"
-          type="file"
-          className="hidden"
-        />
+        <p className="m-10 text-zinc-500 text-4xl font-alfa">CLSI GERA ROTA</p>
       </div>
       <DragDropFile handleFile={this.handleFile}>
         <div className="row">
@@ -69,22 +55,21 @@ export default class SheetJSApp extends React.Component {
             <DataInput handleFile={this.handleFile} />
           </div>
         </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <button
-              disabled={!this.state.data.length}
-              className="btn btn-success"
-              onClick={this.exportFile}
-            >
-              Export
-            </button>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-12">
+        <div>
+          <div>
             <OutTable data={this.state.data} cols={this.state.cols} />
           </div>
         </div>
+        <form className="form-inline">
+          <div className="flex justify-center items-center">
+            <button className="bg-red-500 hover:bg-red-700 rounded p-2 text-zinc-100 font-bold"
+              id="exportFile"
+              type="file"
+              onClick={this.exportFile}>                
+            Export
+            </button>
+          </div>
+        </form>
       </DragDropFile>
     </div>
     )

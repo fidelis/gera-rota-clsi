@@ -26,14 +26,32 @@ export default class DataInput extends React.Component {
     if (rABS) reader.readAsBinaryString(file)
     else reader.readAsArrayBuffer(file)
   }
-  handleChange(e: any) {
+  handleChange(e) {
     const files = e.target.files
     if (files && files[0]) this.props.handleFile(files[0])
   }
   render() {
     return (
       <form className="form-inline">
-        <div className="form-group">
+        <div className="flex justify-center items-center">
+        <label
+          htmlFor="inputFile"
+          className=" bg-red-500 hover:bg-red-700 rounded p-2 text-zinc-100 font-bold flex flex-row"
+        >
+          {/* <Path size={24} /> */}
+          Carregar Rota
+        </label>
+        <input
+          id="inputFile"
+          type="file"
+          className="hidden"
+          accept={
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          }
+          onChange={this.handleChange}
+        />
+      </div>
+        {/* <div className="form-group">
           <label htmlFor="file">Spreadsheet</label>
           <input
             type="file"
@@ -44,7 +62,7 @@ export default class DataInput extends React.Component {
             }
             onChange={this.handleChange}
           />
-        </div>
+        </div> */}
       </form>
     )
   }

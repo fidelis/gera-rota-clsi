@@ -3,8 +3,8 @@ import React from "react"
 export default class OutTable extends React.Component {
   render() {
     return (
-      <div className="table-responsive">
-        <table className="table table-striped">
+      <div className="table-fixed">
+        <table className="table-auto">
           <thead>
             <tr>
               {this.props.cols.map((c) => (
