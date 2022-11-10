@@ -8,7 +8,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      'alfa': ['alfaslabone']
+      'alfa': ['Alfa Slab One']
     }
   },
   plugins: [],

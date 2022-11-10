@@ -1,6 +1,6 @@
 import React from "react"
 import * as XLSX from "xlsx"
-
+import { Path } from "phosphor-react"
 export default class DataInput extends React.Component {
   constructor(props) {
     super(props)
@@ -36,9 +36,9 @@ export default class DataInput extends React.Component {
         <div className="flex justify-center items-center">
         <label
           htmlFor="inputFile"
-          className=" bg-red-500 hover:bg-red-700 rounded p-2 text-zinc-100 font-bold flex flex-row"
+          className=" bg-red-500 hover:bg-red-700 rounded text-zinc-100 font-bold flex m-5 p-2"
         >
-          {/* <Path size={24} /> */}
+          <Path size={24} />
           Carregar Rota
         </label>
         <input

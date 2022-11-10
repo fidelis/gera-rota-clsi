@@ -47,7 +47,7 @@ export default class SheetJSApp extends React.Component {
     return (
     <div>
       <div className="flex flex-col items-center">
-        <p className="m-10 text-zinc-500 text-4xl font-alfa">CLSI GERA ROTA</p>
+        <p className="m-10 text-zinc-500 text-4xl font-alfa tracking-widest">CLSI GERA ROTA</p>
       </div>
       <DragDropFile handleFile={this.handleFile}>
         <div className="row">
