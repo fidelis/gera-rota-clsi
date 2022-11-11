@@ -36,7 +36,7 @@ export default class DataInput extends React.Component {
         <div className="flex justify-center items-center">
         <label
           htmlFor="inputFile"
-          className=" bg-red-500 hover:bg-red-700 rounded text-zinc-100 font-bold flex m-5 p-2"
+          className=" bg-red-500 hover:bg-red-700 rounded text-zinc-100 font-bold flex m-4 p-1"
         >
           <Path size={24} />
           Carregar Rota

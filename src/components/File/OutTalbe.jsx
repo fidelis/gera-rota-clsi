@@ -3,7 +3,7 @@ import React from "react"
 export default class OutTable extends React.Component {
   render() {
     return (
-      <div className="table-fixed">
+      <div>
         <table className="table-auto">
           <thead>
             <tr>

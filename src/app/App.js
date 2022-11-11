@@ -2,7 +2,8 @@ import React from "react"
 import { read, writeFile, utils } from "xlsx"
 import DragDropFile from "../components/File/DragDropFile"
 import DataInput from "../components/File/DataInput"
-import OutTable from "../components/File/OutTalbe"
+// import OutTable from "../components/File/OutTalbe"
+import RouteForm from "../components/routeForm/RouteForm"
 
 export default class SheetJSApp extends React.Component {
   constructor(props) {
@@ -10,6 +11,16 @@ export default class SheetJSApp extends React.Component {
     this.state = {
       data: [] /* Array of Arrays e.g. [["a","b"],[1,2]] */,
       cols: [] /* Array of column objects e.g. { name: "C", K: 2 } */,
+      idRota: String(),
+      idVeiculo: String(),
+      idFrota: String(),
+      idMotorista: String(),
+      idAjudante1: String(),
+      idAjudante2: String(),
+      idAjudante3: String(),
+      idCarga: String(),
+      dtHrInicio: String(),
+      dtHrFim: String(),
     }
     this.handleFile = this.handleFile.bind(this)
     this.exportFile = this.exportFile.bind(this)
@@ -25,11 +36,41 @@ export default class SheetJSApp extends React.Component {
       /* Get first worksheet */
       const wsname = wb.SheetNames[0]
       const ws = wb.Sheets[wsname]
-      console.log(rABS, wb)
       /* Convert array of arrays */
       const data = utils.sheet_to_json(ws, { header: 1 })
       /* Update state */
-      this.setState({ data: data, cols: make_cols(ws["!ref"]) })
+      let idR = String()
+      let idV = String()
+      let idF = String()
+      let idM = String()
+      let idA1 = String()
+      let idA2 = String()
+      let idA3 = String()
+      let idC = String()
+      let dtHrI = data[1][16]
+      let dtHrF = data[1][17]
+      idR = data[1][0]
+      idV = data[1][1]
+      idF = data[1][2]
+      idM = data[1][3]
+      idA1 = data[1][4]
+      idA2 = data[1][5]
+      idA3 = data[1][6]
+      idC = data[1][7]
+      this.setState({ data: data, 
+                      cols: make_cols(ws["!ref"]), 
+                      idRota: idR, 
+                      idVeiculo: idV,
+                      idFrota: idF,
+                      idMotorista: idM,
+                      idAjudante1: idA1,
+                      idAjudante2: idA2,
+                      idAjudante3: idA3,
+                      idCarga: idC,
+                      dtHrInicio: dtHrI,
+                      dtHrFim: dtHrF,
+                     })
+      console.log(dtHrF)
     }
     if (rABS) reader.readAsBinaryString(file)
     else reader.readAsArrayBuffer(file)
@@ -46,8 +87,10 @@ export default class SheetJSApp extends React.Component {
   render() {
     return (
     <div>
-      <div className="flex flex-col items-center">
-        <p className="m-10 text-zinc-500 text-4xl font-alfa tracking-widest">CLSI GERA ROTA</p>
+      <div>
+        <div className="flex flex-col items-center">
+          <p className="m-8 text-zinc-500 text-4xl font-alfa tracking-widest">CLSI  ROTA</p>
+        </div>
       </div>
       <DragDropFile handleFile={this.handleFile}>
         <div className="row">
@@ -55,22 +98,21 @@ export default class SheetJSApp extends React.Component {
             <DataInput handleFile={this.handleFile} />
           </div>
         </div>
-        <div>
-          <div>
-            <OutTable data={this.state.data} cols={this.state.cols} />
+      </DragDropFile>
+      <div>
+          <div className="w-full">
+            <RouteForm idRota={this.state.idRota} 
+                      idVeiculo={this.state.idVeiculo} 
+                      idFrota={this.state.idFrota} 
+                      idMotorista={this.state.idMotorista}
+                      idAjudante1={this.state.idAjudante1}
+                      idAjudante2={this.state.idAjudante2}
+                      idAjudante3={this.state.idAjudante3}
+                      idCarga={this.state.idCarga}
+                      dtHrInicio={this.state.dtHrInicio}
+                      dtHrFim={this.state.dtHrFim}/>
           </div>
         </div>
-        <form className="form-inline">
-          <div className="flex justify-center items-center">
-            <button className="bg-red-500 hover:bg-red-700 rounded p-2 text-zinc-100 font-bold"
-              id="exportFile"
-              type="file"
-              onClick={this.exportFile}>                
-            Export
-            </button>
-          </div>
-        </form>
-      </DragDropFile>
     </div>
     )
   }
