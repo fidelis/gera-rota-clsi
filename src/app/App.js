@@ -99,20 +99,23 @@ export default class SheetJSApp extends React.Component {
           </div>
         </div>
       </DragDropFile>
-      <div>
-          <div className="w-full">
-            <RouteForm idRota={this.state.idRota} 
-                      idVeiculo={this.state.idVeiculo} 
-                      idFrota={this.state.idFrota} 
-                      idMotorista={this.state.idMotorista}
-                      idAjudante1={this.state.idAjudante1}
-                      idAjudante2={this.state.idAjudante2}
-                      idAjudante3={this.state.idAjudante3}
-                      idCarga={this.state.idCarga}
-                      dtHrInicio={this.state.dtHrInicio}
-                      dtHrFim={this.state.dtHrFim}/>
-          </div>
-        </div>
+      <RouteForm idRota={this.state.idRota} 
+                idVeiculo={this.state.idVeiculo} 
+                idFrota={this.state.idFrota} 
+                idMotorista={this.state.idMotorista}
+                idAjudante1={this.state.idAjudante1}
+                idAjudante2={this.state.idAjudante2}
+                idAjudante3={this.state.idAjudante3}
+                idCarga={this.state.idCarga}
+                dtHrInicio={this.state.dtHrInicio}
+                dtHrFim={this.state.dtHrFim}/>
+      <div className="flex justify-center">
+              <button className="bg-red-500 hover:bg-red-700 rounded p-2 text-zinc-100 font-bold"
+                id="exportFile"
+                type="file">                
+              Mapa
+              </button>
+      </div>
     </div>
     )
   }
