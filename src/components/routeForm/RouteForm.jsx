@@ -8,7 +8,7 @@ export default class RouteForm extends React.Component {
  render () {
   return (
   <div className="flex justify-center">
-   <form className="bg-zinc-100 shadow-md rounded px-8 pt-6 pb-8 mb-8 mt-4 grid md:grid-cols-2">
+   <form className="bg-zinc-100 shadow-md rounded px-8 pt-4 pb-6 mb-4 mt-4 grid md:grid-cols-2">
       <div>
         <label className= {labelClass}
               htmlFor="id_rota">
@@ -130,7 +130,4 @@ export default class RouteForm extends React.Component {
   </div>
   )
  }
-}
- function saveData(e) {
-  console.log(e)
- };
+};

@@ -1,11 +1,11 @@
-import React from "react"
+import * as React from "react"
+import { Navigate } from "react-router-dom"
 import { read, writeFile, utils } from "xlsx"
-import DragDropFile from "../components/File/DragDropFile"
-import DataInput from "../components/File/DataInput"
-// import OutTable from "../components/File/OutTalbe"
-import RouteForm from "../components/routeForm/RouteForm"
+import DragDropFile from "../../components/excelSheet/DragDropFile"
+import DataInput from "../../components/excelSheet/DataInput"
+import RouteForm from "../../components/routeForm/RouteForm"
 
-export default class SheetJSApp extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -24,6 +24,9 @@ export default class SheetJSApp extends React.Component {
     }
     this.handleFile = this.handleFile.bind(this)
     this.exportFile = this.exportFile.bind(this)
+  }
+  state = {
+    redirect:false
   }
   handleFile(file) {
     /* Boilerplate to set up FileReader */
@@ -89,7 +92,7 @@ export default class SheetJSApp extends React.Component {
     <div>
       <div>
         <div className="flex flex-col items-center">
-          <p className="m-8 text-zinc-500 text-4xl font-alfa tracking-widest">CLSI  ROTA</p>
+          <p className="m-4 text-zinc-500 text-4xl font-alfa tracking-widest">CLSI  ROTA</p>
         </div>
       </div>
       <DragDropFile handleFile={this.handleFile}>
@@ -112,7 +115,11 @@ export default class SheetJSApp extends React.Component {
       <div className="flex justify-center">
               <button className="bg-red-500 hover:bg-red-700 rounded p-2 text-zinc-100 font-bold"
                 id="exportFile"
-                type="file">                
+                type="file"
+                onClick={() => {
+                  this.state.redirect && <Navigate to='/Map' replace={true}/>
+               }}
+                >                
               Mapa
               </button>
       </div>
